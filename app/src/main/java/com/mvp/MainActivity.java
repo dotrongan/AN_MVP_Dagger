@@ -2,6 +2,7 @@ package com.mvp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements ListDataView, Mul
 	private ListView lvData;
 	@Inject
 	ListDataPresenter presenter;
+	@Inject
+	SharedPreferences sharedPreferences;
 	private DataAdapter dataAdapter;
 	private ProgressDialog progressDialog;
 	protected final String TAG = "MainActivityStateMaintainer";
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements ListDataView, Mul
 		startMVPOps();
 		progressDialog = new ProgressDialog(this);
 		progressDialog.setMessage("Vui lòng đợi !");
+		checkDependency();
 	}
 
 	private void setupMultipleDropdownList() {
@@ -124,4 +128,14 @@ public class MainActivity extends AppCompatActivity implements ListDataView, Mul
 			presenter.getData(strings);
 		}
 	}
+
+	private void checkDependency() {
+		if(sharedPreferences != null) {
+			Log.d("Dependency", "checkDependency: ngon roi");
+		}
+		else {
+			Log.d("Dependency", "checkDependency: chua ngon");
+		}
+	}
+
 }

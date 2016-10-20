@@ -2,10 +2,14 @@ package com.mvp.Dagger;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.androidquery.AQuery;
 import com.mvp.BaseApp;
 import com.mvp.Pattern.ParseDataTheThao24h;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -36,6 +40,11 @@ public class AppModule {
     AQuery provideAQuery() {
         AQuery aQuery = new AQuery(app);
         return aQuery;
+    }
+
+    @Provides
+    SharedPreferences providesSharedPreferences() {
+        return PreferenceManager.getDefaultSharedPreferences(app);
     }
 
 }

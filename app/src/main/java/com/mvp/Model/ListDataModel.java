@@ -21,6 +21,7 @@ public class ListDataModel implements ModelOps {
 	private ParseDataFactory parseFactory;
 	private PresenterOps presenterOps;
 	private List<Data> lstDataAll;
+	private Context context;
 
 
 	public ListDataModel(PresenterOps presenterOps) {
@@ -30,6 +31,10 @@ public class ListDataModel implements ModelOps {
 
 	public void setParseFactory(ParseDataFactory parseFactory) {
 		this.parseFactory = parseFactory;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
 	}
 
 	@Override
@@ -44,7 +49,7 @@ public class ListDataModel implements ModelOps {
 
 	@Override
 	public void createParseData(String domain) {
-		Strategy strategyParse = parseFactory.createParseData(domain);
+		Strategy strategyParse = parseFactory.createParseData(context,domain);
 		strategyParse.parseData(presenterOps);
 	}
 

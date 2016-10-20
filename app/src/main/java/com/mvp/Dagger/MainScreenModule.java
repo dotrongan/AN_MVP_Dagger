@@ -25,6 +25,7 @@ public class MainScreenModule {
         ListDataPresenter presenter = new ListDataPresenter(mView);
         ListDataModel dataModel = new ListDataModel(presenter);
         dataModel.setParseFactory(new ParseDataFactory());
+        dataModel.setContext(mView);
         presenter.setModel(dataModel);
         return presenter;
     }

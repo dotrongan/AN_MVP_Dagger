@@ -7,5 +7,5 @@ import android.content.Context;
  */
 
 public interface ParseFactory {
-	Strategy createParseData(String domain);
+	Strategy createParseData(Context context,String domain);
 }

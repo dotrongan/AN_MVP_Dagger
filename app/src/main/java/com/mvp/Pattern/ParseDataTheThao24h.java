@@ -23,17 +23,18 @@ import javax.inject.Inject;
 
 public class ParseDataTheThao24h implements Strategy {
 
+	@Inject
 	AQuery aQuery;
 	private static final String URL = "http://www.24h.com.vn/upload/rss/bongda.rss";
 	private static ParseDataTheThao24h instance;
 
-	private ParseDataTheThao24h(Context context) {
-		aQuery = new AQuery(context);
+	private ParseDataTheThao24h() {
+		BaseApp.getAppComponent().inject(this);
 	}
 
-	public static ParseDataTheThao24h getInstance(Context context) {
+	public static ParseDataTheThao24h getInstance() {
 		if (instance == null) {
-			instance = new ParseDataTheThao24h(context);
+			instance = new ParseDataTheThao24h();
 		}
 		return instance;
 	}

@@ -9,12 +9,12 @@ import android.content.Context;
 public class ParseDataFactory implements ParseFactory {
 
 	@Override
-	public Strategy createParseData(Context context,String domain) {
+	public Strategy createParseData(String domain) {
 		if(domain.contains("24h.com.vn")) {
-			return ParseDataTheThao24h.getInstance(context);
+			return ParseDataTheThao24h.getInstance();
 		}
 		else if(domain.contains("thethao247")) {
-			return ParseDataTheThao247.getInstance(context);
+			return ParseDataTheThao247.getInstance();
 		}
 		else {
 			return NoParseData.getInstance();

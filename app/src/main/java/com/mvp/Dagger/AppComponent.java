@@ -15,4 +15,6 @@ import dagger.Component;
 @Component (modules = {AppModule.class})
 public interface AppComponent {
     SharedPreferences sharedPreferences();
+    void inject(ParseDataTheThao24h parseDataTheThao24h);
+    void inject(ParseDataTheThao247 parseDataTheThao247);
 }

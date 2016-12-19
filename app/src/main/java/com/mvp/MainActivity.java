@@ -2,7 +2,9 @@ package com.mvp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +20,7 @@ import com.mvp.Model.Data;
 import com.mvp.Presenter.ListDataPresenter;
 import com.mvp.View.ListDataView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -105,9 +108,9 @@ public class MainActivity extends AppCompatActivity implements ListDataView, Mul
 
 	@Override
 	public void showData(final List<Data> lstData) {
-		dataAdapter = new DataAdapter(this, lstData);
-		lvData.setAdapter(dataAdapter);
-		dataAdapter.notifyDataSetChanged();
+		Intent intent = new Intent(this,TestActivity.class);
+		intent.putParcelableArrayListExtra("data", (ArrayList<? extends Parcelable>) lstData);
+		this.startActivity(intent);
 	}
 
 	@Override
